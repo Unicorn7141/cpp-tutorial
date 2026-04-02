@@ -33,3 +33,6 @@ jobs:
         with:
           args: --image jetbrains/qodana-clang:2025.3-eap --compile-commands build/compile_commands.json --fail-threshold 9999
           upload-result: true
+          use-annotations: true
+          # Do not fail the CI if Qodana itself fails internally
+          fail-on-error: false
