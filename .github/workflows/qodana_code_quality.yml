@@ -23,26 +23,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install tools
-        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
-
-      - name: Generate compilation database
-        run: cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-
-      - name: Verify compile_commands.json
-        run: ls -l build/compile_commands.json
-
       - name: Qodana Scan
+        uses: JetBrains/qodana-action@latest
+        with:
+          # Override the nonexistent jetbrains/qodana-cpp:2025.3
+          args: --image,jetbrains/qodana-clang:2025.3-eap
+          upload-result: true
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_883679330 }}
-        run: |
-          mkdir -p qodana-results
-
-          docker run --rm \
-            -u $(id -u):$(id -g) \
-            -v "$(pwd)":/data/project \
-            -v "$(pwd)/qodana-results":/data/results \
-            -e QODANA_TOKEN="$QODANA_TOKEN" \
-            jetbrains/qodana-clang:2025.3-eap \
-            --compile-commands build/compile_commands.json \
-            --save-report
+          QODANA_ENDPOINT: https://qodana.cloud
