@@ -7,7 +7,7 @@
 #pragma once
 #include <memory>
 struct Node {
-    int value;
-    std::unique_ptr<Node> next;
+    int value {};
+    std::unique_ptr<Node> next {nullptr};
 };
 #endif //DAY_1_NODE_H
