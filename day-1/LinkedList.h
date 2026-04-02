@@ -46,7 +46,7 @@ public:
     // TODO: print()
     void print() const {
         // Using a non-owning node to traverse
-        Node* current = head.get();
+        const Node* current = head.get();
         while (current) {
             std::cout << current->value << " ";
             current = current->next.get();
