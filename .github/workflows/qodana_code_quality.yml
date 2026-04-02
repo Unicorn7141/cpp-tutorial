@@ -18,11 +18,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
           fetch-depth: 0  # a full history is required for pull request analysis
-      - name: 'Qodana Scan'
+      - name: Qodana Scan
         uses: JetBrains/qodana-action@v2025.3
         with:
-          args: --image,jetbrains/qodana-cpp:2025.3-eap
-          # args: --image,jetbrains/qodana-clang:2025.3-eap  # Community version
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_883679330 }}
-          QODANA_ENDPOINT: https://qodana.cloud
+          args: --image,jetbrains/qodana-clang:2025.3-eap,--compile-commands,build/compile_commands.json,--fail-threshold,9999
+          upload-result: true
