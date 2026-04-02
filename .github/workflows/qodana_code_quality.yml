@@ -13,13 +13,23 @@ jobs:
       contents: write
       pull-requests: write
       checks: write
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
-          fetch-depth: 0  # a full history is required for pull request analysis
+          fetch-depth: 0
+
+      - name: Install CMake and Ninja
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
+
+      - name: Configure CMake (generate compile_commands.json)
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          ls -l build/compile_commands.json
+
       - name: Qodana Scan
         uses: JetBrains/qodana-action@v2025.3
         with:
-          args: --image,jetbrains/qodana-clang:2025.3-eap,--compile-commands,build/compile_commands.json,--fail-threshold,9999
+          args: --image jetbrains/qodana-clang:2025.3-eap --compile-commands build/compile_commands.json --fail-threshold 9999
           upload-result: true
