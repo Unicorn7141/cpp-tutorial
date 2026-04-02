@@ -1,44 +1,27 @@
-name: Qodana
+name: Qodana Configuration Upload
 
 on:
-  workflow_dispatch:
-  pull_request:
   push:
-    branches:
-      - master
-      - main
-      - 'releases/*'
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  qodana:
+  upload-qodana-config:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      checks: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Install CMake
-        run: sudo apt-get update && sudo apt-get install -y cmake
-
-      - name: Generate compile_commands.json
-        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-
-      - name: Qodana Scan
+      - name: Run Qodana Configuration Uploader
         env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_883679330 }}
+          QODANA_CONFIGURATIONS_TOKEN: ${{ secrets.QODANA_CONFIGURATIONS_TOKEN }}
         run: |
-          mkdir -p qodana-results
-
           docker run --rm \
-            -u $(id -u):$(id -g) \
-            -v $(pwd):/data/project \
-            -v $(pwd)/qodana-results:/data/results \
-            -e QODANA_TOKEN="$QODANA_TOKEN" \
-            jetbrains/qodana-clang:2025.3-eap \
-            --save-report
+            -v $(pwd):/workspace \
+            -w /workspace \
+            -e QODANA_CONFIGURATIONS_TOKEN=$QODANA_CONFIGURATIONS_TOKEN \
+            jetbrains/qodana-configuration-uploader:latest \
+            --global-configs-file qodana-global-configurations.yaml
