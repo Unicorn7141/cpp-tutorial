@@ -17,6 +17,10 @@ public:
     LinkedList() = default;
     LinkedList(LinkedList&& other) noexcept : head(std::move(other.head)) {}
 
+    LinkedList(const LinkedList&) = delete;
+    LinkedList& operator=(const LinkedList&) = delete;
+    LinkedList& operator=(LinkedList&&) noexcept = default;
+
     // TODO: push_front()
     void push_front(const int val) {
         // We must initialize the Node members manually since no constructor was provided
