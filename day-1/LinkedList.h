@@ -4,7 +4,7 @@
 
 #ifndef DAY_1_LINKEDLIST_H
 #define DAY_1_LINKEDLIST_H
-#pragma once
+
 #include <memory>
 #include <utility>
 #include <iostream>

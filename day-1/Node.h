@@ -4,7 +4,6 @@
 
 #ifndef DAY_1_NODE_H
 #define DAY_1_NODE_H
-#pragma once
 #include <memory>
 struct Node {
     int value {};
