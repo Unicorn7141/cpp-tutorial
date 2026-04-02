@@ -5,6 +5,7 @@ on:
   pull_request:
   push:
     branches:
+      - master
       - main
       - 'releases/*'
 
@@ -17,26 +18,27 @@ jobs:
       checks: write
 
     steps:
-      # 1. Manual Checkout (Bypassing actions/checkout restriction)
       - name: Checkout
-        run: |
-          git init .
-          git remote add origin https://github.com/Unicorn7141/cpp-tutorial.git
-          git fetch --depth=0 origin ${{ github.ref }}
-          git checkout FETCH_HEAD
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # 2. Run Qodana via Docker (Bypassing jetbrains/qodana-action restriction)
-      - name: 'Qodana Scan'
+      - name: Install CMake
+        run: sudo apt-get update && sudo apt-get install -y cmake
+
+      - name: Generate compile_commands.json
+        run: cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+      - name: Qodana Scan
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_883679330 }}
         run: |
-          # Create results directory to avoid permission issues
           mkdir -p qodana-results
-          
+
           docker run --rm \
             -u $(id -u):$(id -g) \
             -v $(pwd):/data/project \
             -v $(pwd)/qodana-results:/data/results \
-            -e QODANA_TOKEN=$QODANA_TOKEN \
-            jetbrains/qodana-cpp:latest \
+            -e QODANA_TOKEN="$QODANA_TOKEN" \
+            jetbrains/qodana-clang:2025.3-eap \
             --save-report
