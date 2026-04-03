@@ -41,6 +41,21 @@ jobs:
             --compile-commands build/compile_commands.json \
             --fail-threshold 9999 \
             || true
+
+      - name: Qodana Scan Badge
+        # You may pin to the exact commit or the version.
+        # uses: joaofouyer/qodana-action-badge@e00e4a5c0b9e551c1d6fdb092327a801d4869203
+        uses: joaofouyer/qodana-action-badge@0.5.0
+        with:
+          # The output from Qodana Scan. {{ steps.qodana_scan.outputs.summary }}
+          qodana-output: 
+          # Generate Test Coverage Badge
+          generate-coverage: # optional, default is false
+          # Generate Code Quality Badge
+          generate-quality: # optional, default is false
+          # Generate a button to Qodana Report with link
+          generate-qodana-button: # optional, default is false
+          
       - name: Sarif Markdown Report
         # You may pin to the exact commit or the version.
         # uses: b-zurg/sarif-to-markdown@bf8450377ef09ec46ad15ab45c7dacb3e292cbc0
