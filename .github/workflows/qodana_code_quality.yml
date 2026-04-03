@@ -31,41 +31,28 @@ jobs:
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           ls -l build/compile_commands.json
 
-      - name: Run Qodana (non-blocking)
+      - name: Run Qodana (forward to Qodana Cloud, non-blocking)
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+          QODANA_REMOTE_URL: ${{ github.server_url }}/${{ github.repository }}
+          QODANA_BRANCH: ${{ github.ref_name }}
+          QODANA_REVISION: ${{ github.sha }}
+          QODANA_JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           mkdir -p qodana-results
           docker run --rm \
             -v "${{ github.workspace }}:/data/project" \
             -v "${{ github.workspace }}/qodana-results:/data/results" \
+            -e QODANA_TOKEN \
+            -e QODANA_REMOTE_URL \
+            -e QODANA_BRANCH \
+            -e QODANA_REVISION \
+            -e QODANA_JOB_URL \
             jetbrains/qodana-clang:2025.3-eap \
             --compile-commands build/compile_commands.json \
             --fail-threshold 9999 \
             || true
-
-      - name: Qodana Scan Badge
-        # You may pin to the exact commit or the version.
-        # uses: joaofouyer/qodana-action-badge@e00e4a5c0b9e551c1d6fdb092327a801d4869203
-        uses: joaofouyer/qodana-action-badge@0.5.0
-        with:
-          # The output from Qodana Scan. {{ steps.qodana_scan.outputs.summary }}
-          qodana-output: 
-          # Generate Test Coverage Badge
-          generate-coverage: # optional, default is false
-          # Generate Code Quality Badge
-          generate-quality: # optional, default is false
-          # Generate a button to Qodana Report with link
-          generate-qodana-button: # optional, default is false
-          
-      - name: Sarif Markdown Report
-        # You may pin to the exact commit or the version.
-        # uses: b-zurg/sarif-to-markdown@bf8450377ef09ec46ad15ab45c7dacb3e292cbc0
-        uses: b-zurg/sarif-to-markdown@v1
-        with:
-          # Path to the sarif file
-          file-path: 
-          # Append the Markdown report to the GitHub Actions job summary.
-          add-job-summary: # optional, default is true
-          
+  
       - name: Upload Qodana report
         uses: actions/upload-artifact@v4
         with:
