@@ -26,12 +26,12 @@ jobs:
       - name: Install CMake and Ninja
         run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
 
-      - name: Configure CMake (generate compile_commands.json)
+      - name: Configure CMake
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           ls -l build/compile_commands.json
 
-      - name: Run Qodana (forward to Qodana Cloud, non-blocking)
+      - name: Run Qodana
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
           QODANA_REMOTE_URL: ${{ github.server_url }}/${{ github.repository }}
@@ -39,22 +39,28 @@ jobs:
           QODANA_REVISION: ${{ github.sha }}
           QODANA_JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          mkdir -p qodana-results
+          mkdir -p .qodana/results
           docker run --rm \
             -v "${{ github.workspace }}:/data/project" \
-            -v "${{ github.workspace }}/qodana-results:/data/results" \
-            -e QODANA_TOKEN \
-            -e QODANA_REMOTE_URL \
-            -e QODANA_BRANCH \
-            -e QODANA_REVISION \
-            -e QODANA_JOB_URL \
+            -v "${{ github.workspace }}/.qodana/results:/data/results" \
             jetbrains/qodana-clang:2025.3-eap \
+            --results-dir /data/results \
             --compile-commands build/compile_commands.json \
             --fail-threshold 9999 \
+            --save-report \
             || true
+
+      - name: Show Qodana output
+        run: |
+          echo "Qodana files:"
+          find .qodana -maxdepth 3 -type f | sort || true
+          echo
+          echo "Qodana dirs:"
+          find .qodana -maxdepth 3 -type d | sort || true
 
       - name: Upload Qodana report
         uses: actions/upload-artifact@v4
         with:
           name: qodana-report
-          path: qodana-results
+          path: .qodana/results
+          if-no-files-found: warn
