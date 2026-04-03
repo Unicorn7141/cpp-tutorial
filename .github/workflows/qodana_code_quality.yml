@@ -1,12 +1,10 @@
 name: Qodana
-
 on:
   workflow_dispatch:
   pull_request:
     branches: [ master, main ]
   push:
     branches: [ master, main, 'releases/*' ]
-
 jobs:
   qodana:
     runs-on: ubuntu-latest
@@ -14,48 +12,22 @@ jobs:
       contents: write
       pull-requests: write
       checks: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Install CMake and Ninja
         run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
-
       - name: Configure CMake
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           ls -l build/compile_commands.json
-
       - name: Run Qodana
+        uses: JetBrains/qodana-action@v2025.1
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-          QODANA_REMOTE_URL: ${{ github.server_url }}/${{ github.repository }}
-          QODANA_BRANCH: ${{ github.ref_name }}
-          QODANA_REVISION: ${{ github.sha }}
-          QODANA_JOB_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          mkdir -p .qodana/results
-          docker run --rm \
-            -v "${{ github.workspace }}:/data/project" \
-            -v "${{ github.workspace }}/.qodana/results:/data/results" \
-            -e QODANA_TOKEN \
-            -e QODANA_REMOTE_URL \
-            -e QODANA_BRANCH \
-            -e QODANA_REVISION \
-            -e QODANA_JOB_URL \
-            jetbrains/qodana-clang:2025.3-eap \
-            --results-dir /data/results \
-            --compile-commands build/compile_commands.json \
-            --fail-threshold 9999 \
-            --save-report \
-            || true
-
-      - name: Upload Qodana report
-        uses: actions/upload-artifact@v4
         with:
-          name: qodana-report
-          path: .qodana/results
-          if-no-files-found: warn
+          linter: jetbrains/qodana-clang:2025.3-eap
+          args: --compile-commands,build/compile_commands.json,--fail-threshold,9999
+          upload-result: true
