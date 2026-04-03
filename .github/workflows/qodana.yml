@@ -31,12 +31,15 @@ jobs:
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
           ls -l build/compile_commands.json
 
-      - name: Run Qodana (non-blocking)
+      - name: Run Qodana
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_883679330 }}
         run: |
           mkdir -p qodana-results
           docker run --rm \
             -v "${{ github.workspace }}:/data/project" \
             -v "${{ github.workspace }}/qodana-results:/data/results" \
+            -e QODANA_TOKEN="$QODANA_TOKEN" \
             jetbrains/qodana-clang:2025.3-eap \
             --compile-commands build/compile_commands.json \
             --fail-threshold 9999 \
