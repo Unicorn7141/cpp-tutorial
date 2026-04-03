@@ -20,12 +20,8 @@ jobs:
       - name: Install CMake and Ninja
         run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
       - name: Configure CMake
-        run: |
-          cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-          ls -l build/compile_commands.json
+        run: cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       - name: Run Qodana
         uses: JetBrains/qodana-action@v2025.3
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-        with:
-          args: --compile-commands,build/compile_commands.json
