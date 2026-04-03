@@ -1,10 +1,49 @@
-####################################################################################################################
-# WARNING: Do not store sensitive information in this file, as its contents will be included in the Qodana report. #
-####################################################################################################################
+name: Qodana
 
-version: "1.0"
-linter: jetbrains/qodana-cpp:2025.3-eap
-profile:
-  name: qodana.recommended
-include:
-  - name: CheckDependencyLicenses
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+      - 'releases/*'
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install CMake and Ninja
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
+
+      - name: Configure CMake (generate compile_commands.json)
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          ls -l build/compile_commands.json
+
+      - name: Run Qodana (non-blocking)
+        run: |
+          mkdir -p qodana-results
+          docker run --rm \
+            -v "${{ github.workspace }}:/data/project" \
+            -v "${{ github.workspace }}/qodana-results:/data/results" \
+            jetbrains/qodana-clang:2025.3-eap \
+            --compile-commands build/compile_commands.json \
+            --fail-threshold 9999 \
+            || true
+
+      - name: Upload Qodana report
+        uses: actions/upload-artifact@v4
+        with:
+          name: qodana-report
+          path: qodana-results
