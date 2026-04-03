@@ -52,7 +52,7 @@ jobs:
             --compile-commands build/compile_commands.json \
             --fail-threshold 9999 \
             || true
-  
+
       - name: Upload Qodana report
         uses: actions/upload-artifact@v4
         with:
