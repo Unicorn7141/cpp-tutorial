@@ -47,7 +47,7 @@ int main() {
                 std::cout << "Email: ";
                 std::getline(std::cin, email);
                 auto c = Contact(name, phone, email);
-                contacts.insert(std::make_pair(name, c));
+                contacts.emplace(name, c);
             } else if (action == 2) {
                 std::cout << "\nRemove contact\n";
                 std::cout << "Name: ";
