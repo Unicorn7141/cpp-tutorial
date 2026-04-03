@@ -22,6 +22,23 @@ jobs:
       - name: Configure CMake
         run: cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       - name: Run Qodana
-        uses: JetBrains/qodana-action@v2025.3
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+        run: |
+          mkdir -p .qodana/results
+          docker run --rm \
+            -v "${{ github.workspace }}:/data/project" \
+            -v "${{ github.workspace }}/.qodana/results:/data/results" \
+            -e QODANA_TOKEN=${{ secrets.QODANA_TOKEN }} \
+            -e QODANA_REMOTE_URL=${{ github.server_url }}/${{ github.repository }} \
+            -e QODANA_BRANCH=${{ github.ref_name }} \
+            -e QODANA_REVISION=${{ github.sha }} \
+            -e QODANA_JOB_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+            jetbrains/qodana-clang:2025.3-eap \
+            --compile-commands build/compile_commands.json \
+            --save-report
+      - name: Upload Qodana report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: qodana-report
+          path: .qodana/results
+          if-no-files-found: warn
