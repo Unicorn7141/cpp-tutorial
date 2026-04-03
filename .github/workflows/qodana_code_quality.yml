@@ -28,6 +28,4 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
-          linter: jetbrains/qodana-clang:2025.3-eap
-          args: --compile-commands,build/compile_commands.json,--fail-threshold,9999
-          upload-result: true
+          args: --compile-commands,build/compile_commands.json
