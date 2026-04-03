@@ -24,7 +24,7 @@ jobs:
       - name: Run Qodana
         run: |
           mkdir -p .qodana/results
-          docker run --rm \
+          docker run --rm --privileged \
             -v "${{ github.workspace }}:/data/project" \
             -v "${{ github.workspace }}/.qodana/results:/data/results" \
             -e QODANA_TOKEN=${{ secrets.QODANA_TOKEN }} \
