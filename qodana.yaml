@@ -1,5 +1,5 @@
 version: "1.0"
-linter: jetbrains/qodana-clang:2025.3-eap
+linter: jetbrains/qodana-clang:2025.1
 failureConditions:
   severityThresholds:
     any: 9999
