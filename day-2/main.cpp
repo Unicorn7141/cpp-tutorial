@@ -8,7 +8,6 @@
 
 int main() {
     std::unordered_map<std::string, Contact> contacts;
-    std::string keyword;
     int action;
     std::string name, phone, email;
 
@@ -28,10 +27,17 @@ int main() {
         } else {
             if (action == 4) {
                 std::cout << "EXITING" << std::endl;
-                exit(0);
-            } else if (action == 1) {
+                break;
+            }
+            if (action == 1) {
                 // TIP Ignore the <code>'\n'</code> from the action selection
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                if (std::cin.fail()) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "Invalid Input. Try again.\n";
+                    continue;
+                }
+
                 // TIP Add a contact to the list
                 std::cout << "\nAdd contact\n";
                 std::cout << "Name: ";
@@ -45,11 +51,11 @@ int main() {
             } else if (action == 2) {
                 std::cout << "\nRemove contact\n";
                 std::cout << "Name: ";
-                std::cin >> name;
-                if (contacts.contains(name)) {contacts.erase(name);}
-                else { std::cout << "No contact named " << name << " was found!\n" << std::endl;}
-            }
-            else {
+                std::getline(std::cin, name);
+                if (contacts.contains(name)) { contacts.erase(name); } else {
+                    std::cout << "No contact named " << name << " was found!\n" << std::endl;
+                }
+            } else {
                 std::cout << "\n--- Phone Book ---\n";
                 int emailSize = 1;
                 int nameSize = 1;
@@ -76,18 +82,6 @@ int main() {
                 }
             }
         }
-
-        // TIP Find the first match using <code>std::find_if</code>
-        auto it = std::find_if(contacts.begin(), contacts.end(), [keyword](const auto &pair) {
-            return pair.first.find(keyword) != std::string::npos;
-        });
-
-        if (it != contacts.end()) {
-            continue;
-        }
-        std::cout << "No such contact: " << keyword << "\n";
-
-        std::cout << std::endl;
+        return 0;
     }
-    return 0;
 }
