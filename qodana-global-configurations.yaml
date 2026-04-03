@@ -1,0 +1,5 @@
+configurations:
+  - id: cpp_tutorial
+    name: CPP Tutorial
+    description: Global Qodana config for cpp-tutorial
+    qodanaYaml: qodana.yaml
