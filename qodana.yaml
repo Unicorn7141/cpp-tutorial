@@ -2,7 +2,5 @@ version: "1.0"
 failureConditions:
   severityThresholds:
     any: 9999
-exclude:
-  - name: All
-    paths:
+
       
