@@ -61,21 +61,21 @@ int main() {
             int nameSize = 1;
             int phoneSize = 1;
 
-            for (auto &contact: contacts) {
-                if (contact.second.phone.length() > phoneSize)
-                    phoneSize = static_cast<int>(contact.second.phone.length());
-                if (contact.second.email.length() > emailSize)
-                    emailSize = static_cast<int>(contact.second.email.length());
-                if (contact.second.name.length() > nameSize)
-                    nameSize = static_cast<int>(contact.second.name.length());
+            for (auto &[_, snd]: contacts) {
+                if (snd.phone.length() > phoneSize)
+                    phoneSize = static_cast<int>(snd.phone.length());
+                if (snd.email.length() > emailSize)
+                    emailSize = static_cast<int>(snd.email.length());
+                if (snd.name.length() > nameSize)
+                    nameSize = static_cast<int>(snd.name.length());
             }
             // TIP Header
             std::cout << std::left << std::setw(++nameSize) << "Name"
                     << std::setw(++phoneSize) << "Phone"
                     << "Email" << "\n";
 
-            for (const auto &pair: contacts) {
-                const Contact &c = pair.second;
+            for (const auto &[_, snd]: contacts) {
+                const Contact &c = snd;
                 std::cout << std::left << std::setw(nameSize) << c.name
                         << std::setw(phoneSize) << c.phone
                         << c.email << "\n";
