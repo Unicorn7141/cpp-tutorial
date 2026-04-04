@@ -2,7 +2,7 @@
 > **14 days · 2h/day · ~28h total** | Intermediate level · Project every day
 
 ---
-[![Qodana](https://github.com/Unicorn7141/cpp-tutorial/actions/workflows/qodan.yml/badge.svg?branch=master)](https://github.com/Unicorn7141/cpp-tutorial/actions/workflows/qodana.yml)
+[![Qodana](https://github.com/Unicorn7141/cpp-tutorial/actions/workflows/qodana.yml/badge.svg)](https://github.com/Unicorn7141/cpp-tutorial/actions/workflows/qodana.yml)
 ---
 
 ## Overview
