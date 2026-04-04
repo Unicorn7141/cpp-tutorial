@@ -5,4 +5,4 @@ failureConditions:
 exclude:
   - name: All
     paths:
-      - day-2
+      
