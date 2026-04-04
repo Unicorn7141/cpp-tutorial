@@ -3,6 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <limits>
+#include <ranges>
 
 #include "Contact.h"
 
@@ -61,7 +62,7 @@ int main() {
             int nameSize = 1;
             int phoneSize = 1;
 
-            for (auto &[_, snd]: contacts) {
+            for (auto &snd: contacts | std::views::values) {
                 if (snd.phone.length() > phoneSize)
                     phoneSize = static_cast<int>(snd.phone.length());
                 if (snd.email.length() > emailSize)
@@ -74,8 +75,7 @@ int main() {
                     << std::setw(++phoneSize) << "Phone"
                     << "Email" << "\n";
 
-            for (const auto &[_, snd]: contacts) {
-                const Contact &c = snd;
+            for (const auto &c : contacts | std::views::values) {
                 std::cout << std::left << std::setw(nameSize) << c.name
                         << std::setw(phoneSize) << c.phone
                         << c.email << "\n";
