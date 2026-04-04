@@ -34,6 +34,7 @@ jobs:
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
+          linter: jetbrains/qodana-clang:2025.3-eap
           args: --compile-commands,build/compile_commands.json
           results-dir: ${{ runner.temp }}/qodana-results
           upload-result: true
