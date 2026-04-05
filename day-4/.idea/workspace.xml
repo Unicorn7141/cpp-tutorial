@@ -23,11 +23,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6702ec08-690a-4a7b-94fe-8036062d7a7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/RingBuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../day-3/EventBus.h" beforeDir="false" afterPath="$PROJECT_DIR$/../day-3/EventBus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../day-3/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../day-3/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="6702ec08-690a-4a7b-94fe-8036062d7a7b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +136,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1775413365911</updated>
-      <workItem from="1775413367129" duration="3315000" />
+      <workItem from="1775413367129" duration="3594000" />
     </task>
     <servers />
   </component>
