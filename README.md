@@ -11,9 +11,9 @@
 | | |
 |---|---|
 | **Status** | Day 4 of 14 — in progress |
-| **Completed** | Days 1–3 ✅ |
-| **Active** | Day 4 — Templates & Generics ▶ |
-| **Remaining** | Days 5–14 |
+| **Completed** | Days 1–4 ✅ |
+| **Active** | D5 — CMake & vcpkg ▶ |
+| **Remaining** | Days 6–14 |
 | **Started** | April 02, 2026 |
 | **End date** | April 15, 2026 |
 
@@ -182,8 +182,8 @@ Combined Qt6 Widgets/QML + Dear ImGui debug overlay. Packaged with `cmake --inst
 | 1 | D1 — Smart Ptrs & Move Semantics | Memory-Safe Linked List | ✅ Done | Apr 02 |
 | 2 | D2 — STL Containers & Algorithms | Contact Book CLI | ✅ Done | Apr 03 |
 | 3 | D3 — OOP & Design Patterns | Event System / Observer | ✅ Done | Apr 04 |
-| 4 | D4 — Templates & Generics | Type-Safe Ring Buffer | ▶️ Active | Apr 05 |
-| 5 | D5 — CMake & vcpkg | Proper CMake Project | ⏳ | Apr 06 |
+| 4 | D4 — Templates & Generics | Type-Safe Ring Buffer | ✅ Done | Apr 05 |
+| 5 | D5 — CMake & vcpkg | Proper CMake Project | ▶️ Active | Apr 06 |
 | 6 | D6 — Concurrency Pt.1 | Multi-threaded Queue | ⏳ | Apr 07 |
 | 7 | D7 — Concurrency Pt.2 & Review | CLI Sensor Logger 🏆 | ⏳ | Apr 08 |
 | 8 | D8 — Qt6 Widgets Intro | Basic Qt6 Window App | ⏳ | Apr 09 |
