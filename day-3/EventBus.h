@@ -1,41 +1,61 @@
-//
-// Created by harel on 04/04/2026.
-//
-
 #pragma once
+#include <algorithm>
 #include <any>
-#include <string>
+#include <cstdint>
 #include <functional>
-#include <vector>
-#include <unordered_map>
-#include <ranges>
 #include <iostream>
+#include <ranges>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 class EventBus {
 public:
+    using ListenerID = std::size_t;
+    using Callback = std::function<void(std::any)>;
 
-    // Subscribe
-    template <typename T>
-    void subscribe(const std::string &name, const std::function<void(T)> cb) { // cb = callback
-        listeners_[name].push_back([cb](std::any data) {
-            cb(std::any_cast<T>(data));
-        });
+    template<typename T>
+    ListenerID subscribe(const std::string &eventName, std::function<void(T)> cb)  {
 
-        std::cout << "New listener added to: " << name << "\n";
+        ListenerID id = next_id_++;
+
+        Callback wrapper = [eventName, cb](std::any data) {
+            try {
+                cb(std::any_cast<T>(data));
+            } catch (const std::bad_any_cast &) {
+                std::cerr << "Type mismatch on event: " << eventName << '\n';
+            }
+        };
+
+        listeners_[eventName].emplace_back(id, std::move(wrapper));
+        return id;
     }
 
-    // Emit
-    template <typename T>
-    void emit(const std::string &name, T data) {
-        for (auto &fn : listeners_[name]) fn(data);
+    template<typename T>
+    void emit(const std::string &eventName, T value) {
+        const auto it = listeners_.find(eventName);
+        if (it == listeners_.end()) return;
+
+        const std::any data = value;
+        for (auto &fn: it->second | std::views::values) {
+            fn(data);
+        }
     }
 
-    // Unsubscribe
-    void unsubscribe(const std::string &name) {
-        listeners_.erase(name);
-        std::cout << "Deleted " << name << "\n";
+    void unsubscribe(const std::string &eventName, ListenerID id) {
+        auto it = listeners_.find(eventName);
+        if (it == listeners_.end()) return;
+
+        auto &vec = it->second;
+        std::erase_if(vec,
+                      [id](const auto &entry) { return entry.first == id; });
+    }
+
+    uint16_t countListeners(const std::string &name) {
+        return listeners_[name].size();
     }
 
 private:
-    std::unordered_map<std::string, std::vector<std::function<void(std::any)>>> listeners_;
+    std::unordered_map<std::string, std::vector<std::pair<ListenerID, Callback> > > listeners_;
+    ListenerID next_id_ = 0;
 };
