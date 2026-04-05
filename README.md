@@ -40,7 +40,7 @@ gantt
     D4 — Templates & Generics   :done, 2026-04-05, 1d
     Project — Type-Safe Ring Buffer   :done, 2026-04-05, 1d
     D5 — CMake & vcpkg   :active, 2026-04-06, 1d
-    Project — Proper CMake Project   :active 2026-04-06, 1d
+    Project — Proper CMake Project   :active, 2026-04-06, 1d
     D6 — Concurrency Pt.1   :2026-04-07, 1d
     Project — Multi-threaded Queue   :2026-04-07, 1d
     D7 — Concurrency Pt.2 & Review   :2026-04-08, 1d
