@@ -7,7 +7,7 @@ int main() {
     int counter = 0;
 
     bus.subscribe<float>("sensor_data", [](const float val) { std::cout << "[LOG] New value registered: " << val << "\n"; });
-    bus.subscribe<float>("sensor_data", [&counter](const float val) { counter++; });
+    bus.subscribe<std::optional<std::any>>("sensor_data", [&counter](const std::optional<std::any>& _) { counter++; });
     bus.subscribe<float>("sensor_data", [](const float val) { if (val > 100.0f) std::cout << "[ALERT] Sensor reading exceeded the threshold\n"; });
 
     bus.emit("sensor_data", 90.0f);
