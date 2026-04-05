@@ -8,7 +8,7 @@ int main() {
     int cnt = 0;
 
     auto logger = [](const float val) { std::cout << "[LOG] New value registered: " << val << "\n"; };
-    auto counter = [&cnt](int) { cnt++; };;
+    auto counter = [&cnt](int) { cnt++; };
     auto alert = [](const float val) {
         if (val > 100.0f) std::cout << "[ALERT] Value exceeds the threshold!\n";
     };
