@@ -10,7 +10,7 @@
 
 | | |
 |---|---|
-| **Status** | Day 4 of 14 — in progress |
+| **Status** | Day 5 of 14 — in progress |
 | **Completed** | Days 1–4 ✅ |
 | **Active** | D5 — CMake & vcpkg ▶ |
 | **Remaining** | Days 6–14 |
