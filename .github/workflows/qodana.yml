@@ -22,8 +22,8 @@ jobs:
           fetch-depth: 0
 
       - name: Install CMake and Ninja
-        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build
-
+        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libfmt-dev
+      
       - name: Configure CMake (generate compile_commands.json)
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
