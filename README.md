@@ -10,14 +10,14 @@
 
 | | |
 |---|---|
-| **Status** | Day 4 of 14 — in progress |
-| **Completed** | Days 1–3 ✅ |
-| **Active** | Day 4 — Templates & Generics ▶ |
-| **Remaining** | Days 5–14 |
+| **Status** | Day 5 of 14 — in progress |
+| **Completed** | Days 1–4 ✅ |
+| **Active** | D5 — CMake & vcpkg ▶ |
+| **Remaining** | Days 6–14 |
 | **Started** | April 02, 2026 |
 | **End date** | April 15, 2026 |
 
-**`[████░░░░░░░░░░] 3/14 (21%)`**
+**`[████░░░░░░░░░░] 4/14 (28%)`**
 
 ---
 
@@ -37,10 +37,10 @@ gantt
     Project — Contact Book CLI   :done, 2026-04-03, 1d
     D3 — OOP & Design Patterns   :done, 2026-04-04, 1d
     Project — Event System / Observer   :done, 2026-04-04, 1d
-    D4 — Templates & Generics   :active, 2026-04-05, 1d
-    Project — Type-Safe Ring Buffer   :active, 2026-04-05, 1d
-    D5 — CMake & vcpkg   :2026-04-06, 1d
-    Project — Proper CMake Project   :2026-04-06, 1d
+    D4 — Templates & Generics   :done, 2026-04-05, 1d
+    Project — Type-Safe Ring Buffer   :done, 2026-04-05, 1d
+    D5 — CMake & vcpkg   :active, 2026-04-06, 1d
+    Project — Proper CMake Project   :active, 2026-04-06, 1d
     D6 — Concurrency Pt.1   :2026-04-07, 1d
     Project — Multi-threaded Queue   :2026-04-07, 1d
     D7 — Concurrency Pt.2 & Review   :2026-04-08, 1d
@@ -90,14 +90,14 @@ CLI contact manager in `unordered_map`. Sort by name, filter with lambda, print 
 
 `EventBus`: `subscribe()`, `emit()`, `unsubscribe()` at runtime. At least 3 listener types.
 
-### ▶️ D4 — Templates & Generics
+### ✅ D4 — Templates & Generics
 **📅 Date:** Sunday, April 05  
 **📦 Project:** Type-Safe Ring Buffer  
 **⏱ Theory (45 min):** Function/class templates, partial specialization · Variadic templates, fold expressions · C++20 concepts
 
 Generic `RingBuffer<T,N>`: fixed-size, no heap. C++20 concept: `T` must be `trivially_copyable`.
 
-### ⏳ D5 — CMake & vcpkg
+### ▶️ D5 — CMake & vcpkg
 **📅 Date:** Monday, April 06  
 **📦 Project:** Proper CMake Project  
 **⏱ Theory (45 min):** CMake targets, find_package, target_link_libraries · vcpkg manifest mode · .clang-format / .clang-tidy
@@ -182,8 +182,8 @@ Combined Qt6 Widgets/QML + Dear ImGui debug overlay. Packaged with `cmake --inst
 | 1 | D1 — Smart Ptrs & Move Semantics | Memory-Safe Linked List | ✅ Done | Apr 02 |
 | 2 | D2 — STL Containers & Algorithms | Contact Book CLI | ✅ Done | Apr 03 |
 | 3 | D3 — OOP & Design Patterns | Event System / Observer | ✅ Done | Apr 04 |
-| 4 | D4 — Templates & Generics | Type-Safe Ring Buffer | ▶️ Active | Apr 05 |
-| 5 | D5 — CMake & vcpkg | Proper CMake Project | ⏳ | Apr 06 |
+| 4 | D4 — Templates & Generics | Type-Safe Ring Buffer | ✅ Done | Apr 05 |
+| 5 | D5 — CMake & vcpkg | Proper CMake Project | ▶️ Active | Apr 06 |
 | 6 | D6 — Concurrency Pt.1 | Multi-threaded Queue | ⏳ | Apr 07 |
 | 7 | D7 — Concurrency Pt.2 & Review | CLI Sensor Logger 🏆 | ⏳ | Apr 08 |
 | 8 | D8 — Qt6 Widgets Intro | Basic Qt6 Window App | ⏳ | Apr 09 |
