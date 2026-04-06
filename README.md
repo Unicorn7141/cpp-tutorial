@@ -90,14 +90,14 @@ CLI contact manager in `unordered_map`. Sort by name, filter with lambda, print 
 
 `EventBus`: `subscribe()`, `emit()`, `unsubscribe()` at runtime. At least 3 listener types.
 
-### ▶️ D4 — Templates & Generics
+### ✅ D4 — Templates & Generics
 **📅 Date:** Sunday, April 05  
 **📦 Project:** Type-Safe Ring Buffer  
 **⏱ Theory (45 min):** Function/class templates, partial specialization · Variadic templates, fold expressions · C++20 concepts
 
 Generic `RingBuffer<T,N>`: fixed-size, no heap. C++20 concept: `T` must be `trivially_copyable`.
 
-### ⏳ D5 — CMake & vcpkg
+### ▶️ D5 — CMake & vcpkg
 **📅 Date:** Monday, April 06  
 **📦 Project:** Proper CMake Project  
 **⏱ Theory (45 min):** CMake targets, find_package, target_link_libraries · vcpkg manifest mode · .clang-format / .clang-tidy
