@@ -1,0 +1,12 @@
+{
+  "name" : "day-5",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "a95ba287187566a655f902c5f398af17fffdcacf",
+  "dependencies" : [ {
+    "name" : "catch2",
+    "version>=" : "3.13.0#2"
+  }, {
+    "name" : "fmt",
+    "version>=" : "12.1.0"
+  } ]
+}

@@ -3,6 +3,10 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="5" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+  </component>
   <component name="CMakePresetLoader"><![CDATA[{
   "useNewFormat": true
 }]]></component>
@@ -14,16 +18,27 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="day_4" targetName="day_4" />
+      <config projectName="day_5" targetName="tests" />
+      <config projectName="day_5" targetName="day_5" />
     </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DVCPKG_TARGET_TRIPLET=x64-mingw-static -DVCPKG_HOST_TRIPLET=x64-mingw-static -DCMAKE_TOOLCHAIN_FILE=C:\Users\harel\.vcpkg-clion\vcpkg\scripts\buildsystems\vcpkg.cmake" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6702ec08-690a-4a7b-94fe-8036062d7a7b" name="Changes" comment="" />
+    <list default="true" id="b729b70b-d703-426a-8ee2-e8450ef31cf3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.clang-format" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/day-5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/RingBuffer.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_ringbuffer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../day-4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../day-4/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +64,7 @@
   }
 }]]></component>
   <component name="MacroExpansionManager">
-    <option name="directoryName" value="2l8mmH4y" />
+    <option name="directoryName" value="G7FlFKQv" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
@@ -61,27 +76,27 @@
     <option name="productBranch" value="Classic" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5,
+  "associatedIndex": 0,
   "fromUser": false
 }]]></component>
-  <component name="ProjectId" id="3BwwIxJBJ7cnzaA8OoacEZbJwpS" />
+  <component name="ProjectId" id="3Bze8Wd3nS5vGoC2m0Z9W9We5rS" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "CMake Application.day_4.executor": "Run",
+    "CMake Application.day_5.executor": "Run",
+    "CMake Application.tests.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
@@ -91,14 +106,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/harel/CLionProjects/cpp-progress/cpp-tutorial/day-4/main.cpp",
+    "onboarding.tips.debug.path": "C:/Users/harel/CLionProjects/cpp-progress/cpp-tutorial/day-5/main.cpp",
     "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "CMakeSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="QodanaCloudProjectLink">
-    <option name="lastReportId" value="7xXR4o" />
+    <option name="lastReportId" value="NV1Z1D" />
     <option name="linkedProjectId" value="Obd6L" />
     <option name="linkedProjectName" value="CPP Tutorial" />
     <option name="organizationId" value="nexb0" />
@@ -108,36 +123,50 @@
     <option name="cloudReportPersistedInfo">
       <CloudReportPersistedInfo>
         <option name="projectId" value="Obd6L" />
-        <option name="reportId" value="Db1m1Z" />
+        <option name="reportId" value="NV1Z1D" />
       </CloudReportPersistedInfo>
     </option>
   </component>
   <component name="QodanaIsSelectedPersistenceService">
     <option name="selectedOrLoading" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\harel\CLionProjects\cpp-progress\cpp-tutorial\day-5\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.tests">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="day_4" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="day_4" TARGET_NAME="day_4" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="day_4" RUN_TARGET_NAME="day_4">
+    <configuration name="day_5" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="day_5" TARGET_NAME="day_5" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="day_5" RUN_TARGET_NAME="day_5">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="day_5" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="day_5" RUN_TARGET_NAME="tests">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.day_5" />
+      <item itemvalue="CMake Application.tests" />
+    </list>
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6702ec08-690a-4a7b-94fe-8036062d7a7b" name="Changes" comment="" />
-      <created>1775413365911</created>
+      <changelist id="b729b70b-d703-426a-8ee2-e8450ef31cf3" name="Changes" comment="" />
+      <created>1775496166873</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1775413365911</updated>
-      <workItem from="1775413367129" duration="5367000" />
+      <updated>1775496166873</updated>
+      <workItem from="1775496168435" duration="1727000" />
     </task>
     <servers />
   </component>
@@ -150,8 +179,15 @@
     <isAutomaticReloadCMake value="true" />
     <isAutomaticBootstrapAfterUpdate value="false" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.cpp</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
