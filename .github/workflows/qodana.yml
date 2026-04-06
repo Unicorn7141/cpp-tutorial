@@ -3,9 +3,9 @@ name: Qodana
 on:
   workflow_dispatch:
   pull_request:
-    branches: [ master, main ]
+    branches: [master, main]
   push:
-    branches: [ master, main, 'releases/*' ]
+    branches: [master, main, 'releases/*']
 
 jobs:
   qodana:
@@ -23,18 +23,20 @@ jobs:
 
       - name: Install CMake and Ninja
         run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libfmt-dev
-      
-      - name: Configure CMake (generate compile_commands.json)
+
+      - name: Configure CMake
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          test -f build/compile_commands.json
           ls -l build/compile_commands.json
 
-      - name: Run Qodana
-        uses: JetBrains/qodana-action@v2025.3.2
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+      - name: Qodana Scan
+        uses: JetBrains/qodana-action@v2025.3
         with:
-          args: --compile-commands,build/compile_commands.json
+          args: |
+            --compile-commands,build/compile_commands.json
           results-dir: ${{ runner.temp }}/qodana-results
           upload-result: true
           artifact-name: qodana-report
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
