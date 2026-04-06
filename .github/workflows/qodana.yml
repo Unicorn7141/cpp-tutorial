@@ -22,8 +22,14 @@ jobs:
           fetch-depth: 0
 
       - name: Install CMake and Ninja
-        run: sudo apt-get update && sudo apt-get install -y cmake ninja-build libfmt-dev
-
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build libfmt-dev
+          git clone https://github.com/catchorg/Catch2.git --branch v3.13.0 --depth 1
+          cd Catch2
+          cmake -B build -DBUILD_TESTING=OFF
+          sudo cmake --build build --target install
+          
       - name: Configure CMake
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
