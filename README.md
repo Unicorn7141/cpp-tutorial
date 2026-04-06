@@ -12,7 +12,7 @@
 |---|---|
 | **Status** | Day 5 of 14 — in progress |
 | **Completed** | Days 1–5 ✅ |
-| **Active** |  |
+| **Active** | D6 — Concurrency Pt.1 |
 | **Remaining** | Days 6–14 |
 | **Started** | April 02, 2026 |
 | **End date** | April 15, 2026 |
@@ -41,8 +41,8 @@ gantt
     Project — Type-Safe Ring Buffer   :done, 2026-04-05, 1d
     D5 — CMake & vcpkg   :done, 2026-04-06, 1d
     Project — Proper CMake Project   :done, 2026-04-06, 1d
-    D6 — Concurrency Pt.1   :2026-04-07, 1d
-    Project — Multi-threaded Queue   :2026-04-07, 1d
+    D6 — Concurrency Pt.1   :active, 2026-04-07, 1d
+    Project — Multi-threaded Queue   :active, 2026-04-07, 1d
     D7 — Concurrency Pt.2 & Review   :2026-04-08, 1d
     Project — CLI Sensor Logger   :milestone, 2026-04-08, 1d
 
@@ -97,14 +97,14 @@ CLI contact manager in `unordered_map`. Sort by name, filter with lambda, print 
 
 Generic `RingBuffer<T,N>`: fixed-size, no heap. C++20 concept: `T` must be `trivially_copyable`.
 
-### ▶️ D5 — CMake & vcpkg
+### ✅ D5 — CMake & vcpkg
 **📅 Date:** Monday, April 06  
 **📦 Project:** Proper CMake Project  
 **⏱ Theory (45 min):** CMake targets, find_package, target_link_libraries · vcpkg manifest mode · .clang-format / .clang-tidy
 
 Restructure Day 4 into full CMake project. `vcpkg.json` with `fmt`/`nlohmann-json`. Catch2 tests.
 
-### ⏳ D6 — Concurrency Pt.1
+### ▶️ D6 — Concurrency Pt.1
 **📅 Date:** Tuesday, April 07  
 **📦 Project:** Multi-threaded Queue  
 **⏱ Theory (45 min):** std::thread, mutex, lock_guard, unique_lock · condition_variable · RAII lock patterns
