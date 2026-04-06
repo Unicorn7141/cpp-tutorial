@@ -11,13 +11,13 @@
 | | |
 |---|---|
 | **Status** | Day 5 of 14 — in progress |
-| **Completed** | Days 1–4 ✅ |
-| **Active** | D5 — CMake & vcpkg ▶ |
+| **Completed** | Days 1–5 ✅ |
+| **Active** |  |
 | **Remaining** | Days 6–14 |
 | **Started** | April 02, 2026 |
 | **End date** | April 15, 2026 |
 
-**`[████░░░░░░░░░░] 4/14 (28%)`**
+**`[█████░░░░░░░░░] 5/14 (36%)`**
 
 ---
 
@@ -39,8 +39,8 @@ gantt
     Project — Event System / Observer   :done, 2026-04-04, 1d
     D4 — Templates & Generics   :done, 2026-04-05, 1d
     Project — Type-Safe Ring Buffer   :done, 2026-04-05, 1d
-    D5 — CMake & vcpkg   :active, 2026-04-06, 1d
-    Project — Proper CMake Project   :active, 2026-04-06, 1d
+    D5 — CMake & vcpkg   :done, 2026-04-06, 1d
+    Project — Proper CMake Project   :done, 2026-04-06, 1d
     D6 — Concurrency Pt.1   :2026-04-07, 1d
     Project — Multi-threaded Queue   :2026-04-07, 1d
     D7 — Concurrency Pt.2 & Review   :2026-04-08, 1d
